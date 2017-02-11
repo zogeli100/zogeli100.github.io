@@ -1,0 +1,945 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="../../../../lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="../../../../lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="../../../../css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vue echart layui," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="statement-table一个基于vue的含检索排序分页的表格table和可以按条件过滤数据自动更新视图的图表statement。具体代码请移步本人的Github。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分享一个自制通用表与条件过滤图表">
+<meta property="og:url" content="https://zogeli100.github.io/2017/02/09/分享一个自制通用表与条件过滤图表/index.html">
+<meta property="og:site_name" content="咖喱的博客">
+<meta property="og:description" content="statement-table一个基于vue的含检索排序分页的表格table和可以按条件过滤数据自动更新视图的图表statement。具体代码请移步本人的Github。">
+<meta property="og:updated_time" content="2017-02-11T14:07:03.784Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分享一个自制通用表与条件过滤图表">
+<meta name="twitter:description" content="statement-table一个基于vue的含检索排序分页的表格table和可以按条件过滤数据自动更新视图的图表statement。具体代码请移步本人的Github。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '9049437',
+      author: '可爱又迷人的博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zogeli100.github.io/2017/02/09/分享一个自制通用表与条件过滤图表/"/>
+
+
+
+
+
+  <title> 分享一个自制通用表与条件过滤图表 | 咖喱的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b87bd6f65c2a88f660ec72238c35eb78";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">咖喱的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">一枚呆萌的前端攻城狮。</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://zogeli100.github.io">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="咖喱-zgl">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="../../../../images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="咖喱的博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="咖喱的博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                分享一个自制通用表与条件过滤图表
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T21:23:22+08:00">
+                2017-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="../../../../categories/技术交流/" itemprop="url" rel="index">
+                    <span itemprop="name">技术交流</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/09/分享一个自制通用表与条件过滤图表/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="" class="leancloud_visitors" data-flag-title="分享一个自制通用表与条件过滤图表">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="statement-table"><a href="#statement-table" class="headerlink" title="statement-table"></a>statement-table</h1><p>一个基于vue的含检索排序分页的表格<a href="#table">table</a>和可以按条件过滤数据自动更新视图的图表<a href="#statement">statement</a>。<br>具体代码请移步本人的<a href="https://github.com/zogeli100/statement-table" target="_blank" rel="external">Github</a>。<br><a id="more"></a></p>
+<h2 id="statement"><a href="#statement" class="headerlink" title="statement"></a>statement</h2><p>原料: <code>jquery.js</code> <code>Echart.js</code> <code>layui.js.</code> </p>
+<h3 id="快速上手-本例jsp"><a href="#快速上手-本例jsp" class="headerlink" title="快速上手(本例jsp)"></a>快速上手(本例jsp)</h3><ul>
+<li><p>1.)给省市区设置参数,本例是jsp :c foreach，下级js根据选择区域的code更新，方法不限。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-item"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"layui-form-label"</span>&gt;</span>区域：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-input-inline"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"province"</span> <span class="attr">lay-filter</span>=<span class="string">"province"</span> <span class="attr">id</span>=<span class="string">"province"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span>请选择省<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">var</span>=<span class="string">"pro"</span> <span class="attr">items</span>=<span class="string">"$&#123;areaList&#125;"</span> &gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">option</span>  <span class="attr">value</span>=<span class="string">"$&#123;pro.code &#125;"</span> <span class="attr">selected</span>=<span class="string">""</span>&gt;</span>$&#123;pro.name&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span>                </div><div class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>2.) 在<code>form.on</code>两个监听中写好省-&gt;市,市-&gt;区的ajax。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">form.on(<span class="string">'select(province)'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">$(<span class="string">"#city"</span>).html(<span class="string">"&lt;option value=''&gt;请选择市&lt;/option&gt;"</span>);</div><div class="line">$(<span class="string">"#area"</span>).html(<span class="string">"&lt;option value=''&gt;请选择县/区&lt;/option&gt;"</span>);</div><div class="line">$.ajax(&#123;</div><div class="line"> <span class="attr">type</span>:<span class="string">"post"</span>,</div><div class="line">  <span class="attr">url</span>:<span class="string">"&lt;%=basePath%&gt;statement/threelev.do"</span>,</div><div class="line">  <span class="attr">data</span>:&#123;<span class="string">"pro_id"</span>:data.value&#125;,</div><div class="line"> <span class="attr">success</span>:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">    <span class="comment">//添加城市数据</span></div><div class="line">    <span class="keyword">var</span> html=<span class="string">"&lt;option value=''&gt;请选择市&lt;/option&gt;"</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;data.length;i++)&#123;</div><div class="line">      html+=<span class="string">"&lt;option value='"</span>+data[i].code+<span class="string">"'&gt;"</span>+data[i].name+<span class="string">"&lt;/option&gt;"</span>;</div><div class="line">    &#125;</div><div class="line">    $(<span class="string">"#city"</span>).html(html);</div><div class="line">    <span class="comment">//重新渲染select</span></div><div class="line">    form.render(<span class="string">'select'</span>);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">error</span>: <span class="function"><span class="keyword">function</span>(<span class="params">XMLHttpRequest, textStatus, errorThrown</span>) </span>&#123;</div><div class="line">       alert(<span class="string">'意外错误'</span>)</div><div class="line">  &#125;,</div><div class="line">&#125;); </div><div class="line">changeview();         </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>3.)<code>items_b1</code> <code>items_b2</code> <code>items_z1</code> <code>items_z2</code>是本例中的两个饼图和柱图的数据，通过工厂函数按需改成自己要的数据（如果修改记得在图表生成配置中也要同步修改）</p>
+</li>
+<li>4.)changeview()里获取新数据的ajax方法，本例提交后台4个参数<code>time</code> <code>starttime</code> <code>endtime</code> <code>areaCode</code>返回的数据按需修改，同理在<code>setoption</code>里按自己的数据需求修改。</li>
+<li>5.)上传前我已在本例设好默认参数,可下在本地直接运行,详细的我在demo里都写好注释了，赶紧试试吧</li>
+</ul>
+<h3 id="tips"><a href="#tips" class="headerlink" title="tips:"></a>tips:</h3><ul>
+<li>导出excel和pdf是后台代码，可自行添加。canvas中点击弹出的列表按钮通过echarts里的toolbox自定义，layer.open同过弹窗查看表格数据。</li>
+</ul>
+<h3 id="思路简析"><a href="#思路简析" class="headerlink" title="思路简析:"></a>思路简析:</h3><ul>
+<li>1.)确定样式，设置动态参数项，本例为时间和区域，样式用layui为参考.</li>
+<li>2.) 按需设置放置图标的视图区，本例共4个图表。</li>
+<li>3.) 对内容进行布局（css）</li>
+<li>4.) 通过echarts设置默认数据，在项目中首次加载将默认数据转化成json，按照不同图表需求转化成不同的数据格式。本例4条数据，写好数据转化函数（工厂模式）生成自己要的数据，配置到4个图表中，全部<code>setOption（option）</code>一下，生成图表。</li>
+<li>5.) 设置图表加载特效和结束加载特效。</li>
+<li>6.) 注册<code>layui</code>组件，写入日期和区域的监听事件（样式控制不多说）。日期可选日周月或时间区间，区域多级联动。</li>
+<li>7.) 每次筛选条件发生改变执行<code>gettime()</code>和<code>getarea()</code>获取最新条件，然后执行视图驱动<code>changeview()</code>和图标加载特效<code>ALLchartload()</code>，ajax获取最新数据，丢到工厂函数里跑跑再异步更新到视图，更新完毕执行<code>ALLchartshow()</code>结束加载特效。</li>
+<li>8.) 设置图表自适应屏幕大小.<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"resize"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;statement.resize();&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Tips："><a href="#Tips：" class="headerlink" title="Tips："></a>Tips：</h3><ul>
+<li>参数可以按需自行添加或者修改，只要在changeview里加入新的参数返回后台即可，适合各种场景下的数据过滤视图化功能。<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><h3 id="本篇需要一定vue基础，新手可以结合vue的文档查看。"><a href="#本篇需要一定vue基础，新手可以结合vue的文档查看。" class="headerlink" title="本篇需要一定vue基础，新手可以结合vue的文档查看。"></a>本篇需要一定vue基础，新手可以结合vue的文档查看。</h3>原料:<code>Jquery.js</code> <code>bootstrap.js</code> <code>vue.js(1.x)</code><h3 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手:"></a>快速上手:</h3></li>
+<li><p>1.)获取数据，转换成json格式，放入data的items中，然后设置各种静态参数,demo里都是默认参数,按需自己修改,order是升序降序,mytrim设置检索对象的键名.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> itemsa=<span class="built_in">JSON</span>.parse(<span class="string">'$&#123;stationList&#125;'</span>);<span class="comment">//你的数据</span></div><div class="line"><span class="keyword">var</span> example1 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">el</span>: <span class="string">'#mybb'</span>,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">order</span>:<span class="number">-1</span>,</div><div class="line">        <span class="attr">select</span>:<span class="string">''</span>,</div><div class="line">        <span class="attr">items</span>: itemsa,</div><div class="line">        <span class="attr">size</span>:<span class="number">8</span>,</div><div class="line">        <span class="attr">page</span>:<span class="number">1</span>,</div><div class="line">        <span class="attr">searchcache</span>:<span class="string">''</span>,</div><div class="line">        <span class="attr">searchs</span>:<span class="string">''</span>,</div><div class="line">        <span class="attr">add</span>:<span class="string">'1'</span>,</div><div class="line">        <span class="attr">cha</span>:<span class="string">'1'</span>,</div><div class="line">        <span class="attr">edi</span>:<span class="string">'1'</span>,</div><div class="line">        <span class="attr">del</span>:<span class="string">'1'</span>,</div><div class="line">        <span class="attr">mytrim</span>:[<span class="string">'Name'</span>]</div><div class="line">    &#125;,</div><div class="line">...)&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>2.)表头Th里需要排序的内容,@click=”change1(‘Name’)”里name为对应值对键名.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">th</span> <span class="attr">class</span>=<span class="string">"center pointer"</span> @<span class="attr">click</span>=<span class="string">"change1('Name')"</span>&gt;</span> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"init myb1"</span> <span class="attr">id</span>=<span class="string">"Name"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>站点名称<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>3.)同理循环渲染td里设置好对应数据.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"center"</span> &gt;</span>&#123;&#123; item.Name &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"center"</span> &gt;</span>&#123;&#123; item.pointX &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span>            </div><div class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"center"</span> &gt;</span>&#123;&#123; item.pointY&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span> </div><div class="line">...</div></pre></td></tr></table></figure>
+</li>
+<li><p>4.)赶紧去试试吧~</p>
+</li>
+</ul>
+<h3 id="tips-1"><a href="#tips-1" class="headerlink" title="tips:"></a>tips:</h3><ul>
+<li>method里的事件按需增删,demo里的例子仅供参考,该例适合各类表格数据展现和操作.</li>
+</ul>
+<h3 id="思路简析-1"><a href="#思路简析-1" class="headerlink" title="思路简析:"></a>思路简析:</h3><ul>
+<li>1.) 架好页面，检索头，表格，分页。</li>
+<li>2.) 获取数据，转化成json。</li>
+<li>3.) 创建vue实例，分配<code>data</code>(静态参数),<code>computed</code>(动态参数),<code>methods</code>(逻辑事件)</li>
+<li>4.) 渲染列表在循环渲染的过程中介入<code>fliterBy</code>用于检索,<code>orderby</code>排序,<code>limitBy</code>分页.  </li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">v-for</span>=<span class="string">"item in items | filterBy searchs in mytrim | orderBy select order | limitBy size size*(page-1)"</span> <span class="attr">v-if</span>=<span class="string">"show"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>5.) 启用分页，在分页中写入跳页和每页显示条数事件。</li>
+<li>6.) 所有操作都是操作vue里的参数，自动更新dom。</li>
+</ul>
+<h2 id="About-关于咖喱"><a href="#About-关于咖喱" class="headerlink" title="About 关于咖喱"></a>About 关于咖喱</h2><ul>
+<li><a href="https://github.com/zogeli100" target="_blank" rel="external">Github-Me</a></li>
+<li><a href="http://www.zogeli.com" target="_blank" rel="external">My-blog</a></li>
+<li><a href="">QQ 418340696</a> </li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="../../../../tags/vue-echart-layui/" rel="tag"># vue echart layui</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="../../08/hello-world/" rel="next" title="欢迎来到我的博客">
+                <i class="fa fa-chevron-left"></i> 欢迎来到我的博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="../../10/三分钟学会用ES7中的Async-Await进行异步编程/" rel="prev" title="三分钟学会用ES7中的Async/Await进行异步编程">
+                三分钟学会用ES7中的Async/Await进行异步编程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/09/分享一个自制通用表与条件过滤图表/"
+           data-title="分享一个自制通用表与条件过滤图表" data-url="https://zogeli100.github.io/2017/02/09/分享一个自制通用表与条件过滤图表/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="../../../../images/avatar.png"
+               alt="咖喱-zgl" />
+          <p class="site-author-name" itemprop="name">咖喱-zgl</p>
+          <p class="site-description motion-element" itemprop="description">每一个不曾起舞的日子都是对生命的辜负。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="../../../../archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="../../../../categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="../../../../tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zogeli100" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2180568631" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://artwind.github.io/" title="博主御用UI-wind" target="_blank">博主御用UI-wind</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#statement-table"><span class="nav-number">1.</span> <span class="nav-text">statement-table</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#statement"><span class="nav-number">1.1.</span> <span class="nav-text">statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速上手-本例jsp"><span class="nav-number">1.1.1.</span> <span class="nav-text">快速上手(本例jsp)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tips"><span class="nav-number">1.1.2.</span> <span class="nav-text">tips:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路简析"><span class="nav-number">1.1.3.</span> <span class="nav-text">思路简析:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tips："><span class="nav-number">1.1.4.</span> <span class="nav-text">Tips：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#table"><span class="nav-number">1.2.</span> <span class="nav-text">table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本篇需要一定vue基础，新手可以结合vue的文档查看。"><span class="nav-number">1.2.1.</span> <span class="nav-text">本篇需要一定vue基础，新手可以结合vue的文档查看。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速上手"><span class="nav-number">1.2.2.</span> <span class="nav-text">快速上手:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tips-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">tips:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路简析-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">思路简析:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#About-关于咖喱"><span class="nav-number">1.3.</span> <span class="nav-text">About 关于咖喱</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">咖喱-zgl</span>
+</div>
+
+
+<div class="powered-by">
+  <span class="links-of-author-item"><a href="http://weibo.com/u/2180568631" target="_blank" title="weibo"><i class="fa fa-fw fa-weibo"></i>新浪微博</a></span>
+</div>
+
+<div class="theme-info">
+  <span class="links-of-author-item"><a href="https://github.com/zogeli100" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a></span>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="../../../../lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="../../../../js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="../../../../js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zogeli"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="../../../../lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="../../../../js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("aAa4MPyLW3QlslTfJKvg8PIM-gzGzoHsz", "2Opio4Ksu2IDbPVESrJjsi1I");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
