@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -87,19 +87,16 @@
 
 
 
-<meta name="description" content="欢迎来到我的个人博客，后续将会有更多精彩内容带给大家。
-   -“每一个不曾起舞的日子都是对生命的辜负。”">
+<meta name="description" content="闭包在 JavaScript 中常用来实现对象数据的私有，在事件处理和回调函数中也常常会用到它，此外还有偏函数应用（partial applications）和柯里化（currying），以及其他函数式编程模式。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欢迎来到我的博客">
-<meta property="og:url" content="https://zogeli100.github.io/2017/02/08/hello-world/index.html">
+<meta property="og:title" content="JavaScript之闭包">
+<meta property="og:url" content="https://zogeli100.github.io/2017/02/12/JavaScript之闭包/index.html">
 <meta property="og:site_name" content="咖喱的博客">
-<meta property="og:description" content="欢迎来到我的个人博客，后续将会有更多精彩内容带给大家。
-   -“每一个不曾起舞的日子都是对生命的辜负。”">
-<meta property="og:updated_time" content="2017-02-11T14:41:56.079Z">
+<meta property="og:description" content="闭包在 JavaScript 中常用来实现对象数据的私有，在事件处理和回调函数中也常常会用到它，此外还有偏函数应用（partial applications）和柯里化（currying），以及其他函数式编程模式。">
+<meta property="og:updated_time" content="2017-02-15T12:13:26.065Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="欢迎来到我的博客">
-<meta name="twitter:description" content="欢迎来到我的个人博客，后续将会有更多精彩内容带给大家。
-   -“每一个不曾起舞的日子都是对生命的辜负。”">
+<meta name="twitter:title" content="JavaScript之闭包">
+<meta name="twitter:description" content="闭包在 JavaScript 中常用来实现对象数据的私有，在事件处理和回调函数中也常常会用到它，此外还有偏函数应用（partial applications）和柯里化（currying），以及其他函数式编程模式。">
 
 
 
@@ -127,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://zogeli100.github.io/2017/02/08/hello-world/"/>
+  <link rel="canonical" href="https://zogeli100.github.io/2017/02/12/JavaScript之闭包/"/>
 
 
 
 
 
-  <title> 欢迎来到我的博客 | 咖喱的博客 </title>
+  <title> JavaScript之闭包 | 咖喱的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -280,7 +277,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://zogeli100.github.io/2017/02/08/hello-world/">
+  <link itemprop="mainEntityOfPage" href="https://zogeli100.github.io/2017/02/12/JavaScript之闭包/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="咖喱-zgl">
@@ -304,7 +301,7 @@
             
             
               
-                欢迎来到我的博客
+                JavaScript之闭包
               
             
           </h1>
@@ -319,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-08T21:23:22+08:00">
-                2017-02-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-12T18:50:35+08:00">
+                2017-02-12
               </time>
             
 
@@ -330,6 +327,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术交流/" itemprop="url" rel="index">
+                    <span itemprop="name">技术交流</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -338,8 +357,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/08/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/08/hello-world/" itemprop="commentCount"></span>
+                <a href="/2017/02/12/JavaScript之闭包/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/12/JavaScript之闭包/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -347,7 +366,7 @@
 
           
           
-             <span id="/2017/02/08/hello-world/" class="leancloud_visitors" data-flag-title="欢迎来到我的博客">
+             <span id="/2017/02/12/JavaScript之闭包/" class="leancloud_visitors" data-flag-title="JavaScript之闭包">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -376,8 +395,31 @@
       
 
       
-        <p>欢迎来到我的个人博客，后续将会有更多精彩内容带给大家。</p>
-<p>   -“每一个不曾起舞的日子都是对生命的辜负。”</p>
+        <p>闭包在 JavaScript 中常用来实现对象数据的私有，在事件处理和回调函数中也常常会用到它，此外还有<code>偏函数应用（partial applications）</code>和<code>柯里化（currying）</code>，以及其他函数式编程模式。<br><a id="more"></a><br>我不在乎面试者是否知道<code>closure</code>这个单词或者它的专业定义。我只想弄清他们是否理解基本原理。如果他们没有，那么通常意味着这些面试者在构建实际 JavaScript 应用方面并没有很多经验。</p>
+<p>如果你不能回答这个问题，你只是个初级开发者。不管你实际上已经干这个多久了。</p>
+<p>为了快速理解下面的内容：你想一下能否举出两个闭包的通用场景？</p>
+<p>什么是闭包？<br>简言之，闭包是由函数引用其周边状态（词法环境）绑在一起形成的（封装）组合结构。在 JavaScript 中，闭包在每个函数被创建时形成。</p>
+<p>这是基本原理，但为什么我们关心这些？实际上，由于闭包与它的词法环境绑在一起，因此闭包让我们能够从一个函数内部访问其外部函数的作用域。</p>
+<p>要使用闭包，只需要简单地将一个函数定义在另一个函数内部，并将它暴露出来。要暴露一个函数，可以将它返回或者传给其他函数。</p>
+<p>内部函数将能够访问到外部函数作用域中的变量，即使外部函数已经执行完毕。</p>
+<p>闭包使用的例子<br>闭包的用途之一是实现对象的私有数据。数据私有是让我们能够面向接口编程而不是面向实现编程的基础。而面向接口编程是一个重要的概念，有助于我们创建更加健壮的软件，因为实现细节比接口约定相对来说更加容易被改变。</p>
+<p>“面向接口编程，别面向实现编程。” 设计模式：可复用面向对象软件的要素</p>
+<p>在 JavaScript 中，闭包是用来实现数据私有的原生机制。当你使用闭包来实现数据私有时，被封装的变量只能在闭包容器函数作用域中使用。你无法绕过对象被授权的方法在外部访问这些数据。在 JavaScript 中，任何定义在闭包作用域下的公开方法才可以访问这些数据。例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getSecret = <span class="function">(<span class="params">secret</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">get</span>: <span class="function"><span class="params">()</span> =&gt;</span> secret</div><div class="line">  &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">test(<span class="string">'Closure for object privacy.'</span>, assert =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> msg = <span class="string">'.get() should have access to the closure.'</span>;</div><div class="line">  <span class="keyword">const</span> expected = <span class="number">1</span>;</div><div class="line">  <span class="keyword">const</span> obj = getSecret(<span class="number">1</span>);</div><div class="line"></div><div class="line">  <span class="keyword">const</span> actual = obj.get();</div><div class="line"></div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    assert.ok(secret, <span class="string">'This throws an error.'</span>);</div><div class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">    assert.ok(<span class="literal">true</span>, The secret <span class="keyword">var</span> is only available</div><div class="line">      to privileged methods.);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  assert.equal(actual, expected, msg);</div><div class="line">  assert.end();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>在上面的例子里，get() 方法定义在 getSecret() 作用域下，这让它可以访问任何 getSecret() 中的变量，于是它就是一个被授权的方法。在这个例子里，它可以访问参数 secret。</p>
+<p>对象不是唯一的产生私有数据的方式。闭包还可以被用来创建有状态的函数，这些函数的执行过程可能由它们自身的内部状态所决定。例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> secret = <span class="function">(<span class="params">msg</span>) =&gt;</span> () =&gt; msg;</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Secret - creates closures with secret messages.</span></div><div class="line"><span class="comment">// https://gist.github.com/ericelliott/f6a87bc41de31562d0f9</span></div><div class="line"><span class="comment">// https://jsbin.com/hitusu/edit?html,js,output</span></div><div class="line"></div><div class="line"><span class="comment">// secret(msg: String) =&gt; getSecret() =&gt; msg: String</span></div><div class="line"><span class="keyword">const</span> secret = <span class="function">(<span class="params">msg</span>) =&gt;</span> () =&gt; msg;</div><div class="line"></div><div class="line">test(<span class="string">'secret'</span>, assert =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> msg = <span class="string">'secret() should return a function that returns the passed secret.'</span>;</div><div class="line"></div><div class="line">  <span class="keyword">const</span> theSecret = <span class="string">'Closures are easy.'</span>;</div><div class="line">  <span class="keyword">const</span> mySecret = secret(theSecret);</div><div class="line"></div><div class="line">  <span class="keyword">const</span> actual = mySecret();</div><div class="line">  <span class="keyword">const</span> expected = theSecret;</div><div class="line"></div><div class="line">  assert.equal(actual, expected, msg);</div><div class="line">  assert.end();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在函数式编程中，闭包经常用于偏函数应用和柯里化。为了说明这个，我们先定义一些概念：</p>
+<p>函数应用：一个过程，指将参数传给一个函数，并获得它的返回值。</p>
+<p>偏函数应用：一个过程，它传给某个函数其中一部分参数，然后返回一个新的函数，该函数等待接受后续参数。换句话说，偏函数应用是一个函数，它接受另一个函数为参数，这个作为参数的函数本身接受多个参数，它返回一个函数，这个函数与它的参数函数相比，接受更少的参数。偏函数应用提前赋予一部分参数，而返回的函数则等待调用时传入剩余的参数。</p>
+<p>偏函数应用通过闭包作用域来提前赋予参数。你可以实现一个通用的函数来赋予指定的函数部分参数，它看起来如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">partialApply(targetFunction: <span class="built_in">Function</span>, ...fixedArgs: Any[]) =&gt;</div><div class="line">  functionWithFewerParams(...remainingArgs: Any[])</div></pre></td></tr></table></figure></p>
+<p>如果你要更进一步理解上面的形式，你可以看这里。</p>
+<p>partialApply 接受一个多参数的函数，以及一串我们想要提前赋给这个函数的参数，它返回一个新的函数，这个函数将接受剩余的参数。</p>
+<p>下面给一个例子来说明，假设你有一个函数，求两个数的和：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b;</div></pre></td></tr></table></figure></p>
+<p>现在你想要得到一个函数，它能够对任何传给它的参数都加 10，我们可以将它命名为  add10()。add10(5) 的结果应该是 15。我们的 partialApply() 函数可以做到这个：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> add10 = partialApply(add, <span class="number">10</span>);</div><div class="line">add10(<span class="number">5</span>);</div></pre></td></tr></table></figure></p>
+<p>在这个例子里，参数 10 通过闭包作用域被提前赋予 add()，从而让我们获得 add10()。</p>
+<p>现在让我们看一下如何实现 partialApply()：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Generic Partial Application Function</span></div><div class="line"><span class="comment">// https://jsbin.com/biyupu/edit?html,js,output</span></div><div class="line"><span class="comment">// https://gist.github.com/ericelliott/f0a8fd662111ea2f569e</span></div><div class="line"></div><div class="line"><span class="comment">// partialApply(targetFunction: Function, ...fixedArgs: Any[]) =&gt;</span></div><div class="line"><span class="comment">//   functionWithFewerParams(...remainingArgs: Any[])</span></div><div class="line"><span class="keyword">const</span> partialApply = <span class="function">(<span class="params">fn, ...fixedArgs</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...remainingArgs</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, fixedArgs.concat(remainingArgs));</div><div class="line">  &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">test(<span class="string">'add10'</span>, assert =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> msg = <span class="string">'partialApply() should partially apply functions'</span></div><div class="line"></div><div class="line">  <span class="keyword">const</span> add = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b;</div><div class="line"></div><div class="line">  <span class="keyword">const</span> add10 = partialApply(add, <span class="number">10</span>);</div><div class="line"></div><div class="line"></div><div class="line">  <span class="keyword">const</span> actual = add10(<span class="number">5</span>);</div><div class="line">  <span class="keyword">const</span> expected = <span class="number">15</span>;</div><div class="line"></div><div class="line">  assert.equal(actual, expected, msg);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>如你所见，它只是简单地返回一个函数，这个函数通过闭包访问了传给 partialApply() 函数的  fixedArgs 参数。</p>
+<p>轮到你来试试了<br>你用闭包来做什么？如果你有最喜欢的应用场景，举一些例子，在评论中告诉我。</p>
 
       
     </div>
@@ -399,6 +441,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
 
       
         
@@ -408,14 +456,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/02/11/这是一篇涵盖近年前端技术&&工具的趣文/" rel="next" title="这是一篇涵盖近年前端技术&&工具的趣文">
+                <i class="fa fa-chevron-left"></i> 这是一篇涵盖近年前端技术&&工具的趣文
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/09/分享一个自制通用表与条件过滤图表/" rel="prev" title="分享一个自制通用表与条件过滤图表">
-                分享一个自制通用表与条件过滤图表 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/02/13/深入浅出Javascript-中-apply、call、bind/" rel="prev" title="深入浅出Javascript 中 apply、call、bind">
+                深入浅出Javascript 中 apply、call、bind <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -442,8 +494,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/08/hello-world/"
-           data-title="欢迎来到我的博客" data-url="https://zogeli100.github.io/2017/02/08/hello-world/">
+      <div class="ds-thread" data-thread-key="2017/02/12/JavaScript之闭包/"
+           data-title="JavaScript之闭包" data-url="https://zogeli100.github.io/2017/02/12/JavaScript之闭包/">
       </div>
     
   </div>
